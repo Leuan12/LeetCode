@@ -15,25 +15,23 @@
 enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。
 """
 
-# 方法1:
-class Solution():
-	def twoSum(self,nums,target):
-		"""
-		:param nums: List[int]
-		:param target:
-		:return:
-		"""
-		hashmap = {}
-		for index, num in enumerate(nums):
-			another_num = target - num
-			if another_num in hashmap:
-				return [hashmap[another_num], index]
-			hashmap[num] = index
-		return None
+# 方法1: 字典模拟hash
+def tow_sum_with_dict(nums, target):
+	_dict = {}
+	for i, m in enumerate(nums):
+		_dict[m] = i
+	print(_dict)
 
-nums = [2,7,11,15]
+	for i, m in enumerate(nums):
+		j = _dict.get(target - m)
+		if j is not None and i != j:
+			print([i, j])
+			return [i, j]
+		else:
+			print('没有结果')
 
-target = 10
+
+nums = [2, 5, 7, 7]
+target = 9
 if __name__ == '__main__':
-	a = Solution()
-	a.twoSum(nums,target)
+	tow_sum_with_dict(nums, target)
